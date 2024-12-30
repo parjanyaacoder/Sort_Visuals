@@ -14,22 +14,22 @@ const styles = StyleSheet.create({
         paddingVertical: 12
     },
     selection1: {
-        width: 64,
-        height: 64,
+        padding: 16,
+        borderRadius: 24,
         backgroundColor: 'green',
         alignItems: 'center',
         justifyContent: 'center',
     },
     selection2: {
-        width: 64,
-        height: 64,
+        padding: 16,
+        borderRadius: 24,
         backgroundColor: 'green',
         alignItems: 'center',
         justifyContent: 'center',
     },
     generateCta: {
-        width: 64,
-        height: 64,
+        padding: 16,
+        borderRadius: 24,
         backgroundColor: 'green',
         alignItems: 'center',
         justifyContent: 'center',
@@ -51,8 +51,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     algoType: {
-        width: 64,
-        height: 64,
+        padding: 16,
+        borderRadius: 24,
         backgroundColor: 'green',
         alignItems: 'center',
         justifyContent: 'center',
@@ -63,23 +63,36 @@ const styles = StyleSheet.create({
         backgroundColor: colors.whiteF7
     },
     ctaContainer: {
-        margin: 24,
+        margin: 12,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-evenly'
     },
     actionCta: {
-       flex: 1,
+       marginVertical: 20,
        alignItems: 'center',
        justifyContent: 'center'
     },
     arrayArea: {
-        flex: 1,
-        marginVertical: 32,
+        paddingBottom: 12,
         paddingHorizontal: 20,
         backgroundColor: colors.whiteE8,
         flexDirection: 'row',
         alignItems: 'flex-end',
+        flex: 1
+    },
+    algos: {
+        flexDirection: 'row',
+        marginVertical: 12,
+        alignContent: 'center',
+        alignItems: 'center',
+        // height: '50%',
+        height: 130,
+        // backgroundColor: 'red',
+        justifyContent: 'space-evenly',
+    },
+    padHz12: {
+        paddingHorizontal: 12
     }
 })
 
