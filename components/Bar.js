@@ -16,7 +16,7 @@ const Bar = (props) => {
 
     console.log(sortedIds,'SortedIDs')
     return (
-    <View style={styles.bar(barHeight, barWidth, false,  sortedIds.find((val)  => val == index) != undefined)}>
+    <View style={styles.bar(barHeight, barWidth, false,  sortedIds.has(index))}>
     </View>
     )
 }
