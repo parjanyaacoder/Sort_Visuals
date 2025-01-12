@@ -15,15 +15,17 @@ import SelectionChip from './components/SelectionChip';
 
 const App = () => {
 
-  const array = useSelector(state => sortingSelectors.getArray(state))
+  var array = useSelector(state => sortingSelectors.getArray(state))
+
+  console.log("Array", array)
   const selectedAlgoType = useSelector(state => sortingSelectors.getAlgoType)
 
-  console.log("")
+
 
   return (
     <SafeAreaView>
       <View style={styles.screen}>
-        <View style={{ height: "35%" }} >
+        <View style={{ height: "40%" }} >
         <View style={styles.top} >
           <Text style={styles.heading} >{strings.sortVisuals}</Text>
         </View>
@@ -45,7 +47,7 @@ const App = () => {
           })}
         </View>
         </View>
-        <View style={{ height: '65%', backgroundColor: 'red' }} >
+        <View style={{ height: '60%' }} >
         <View style={styles.arrayArea}>
           {array.map((item, index) => (<Bar key={index} item={item} index={index} />))}
         </View>

@@ -28,10 +28,10 @@ const setSize = (payload) => {
     payload
 }
 
-const setSpeed = (payload) => {
+const setSpeed = (payload) => ({
     type: sortingActionTypes.SET_SPEED,
     payload
-}
+})
 
 export default {
     startSorting,

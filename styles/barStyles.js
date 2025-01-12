@@ -3,7 +3,7 @@ import colors from "../constants/colors";
 
 const styles = StyleSheet.create({
     bar: (height, width, isSelected, onFinalPosition) => {
-        console.log("HWIO", height, width, isSelected, onFinalPosition)
+        // console.log("HWIO", height, width, isSelected, onFinalPosition)
         return ({
         height: `${height}%`,
         width: `${width}`,

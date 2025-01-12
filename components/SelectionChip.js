@@ -3,6 +3,9 @@ import { Image, Pressable, Text, View } from "react-native";
 import sortingAlgos from "../constants/sortingAlgos";
 import styles from "../styles/chip";
 import images from "../constants/images";
+import { useDispatch, useSelector } from "react-redux";
+import sortingSelectors from "../selectors/sorting";
+import { bubbleSort, selectionSort, quickSort } from "../utils/sorting";
 
 const SelectionChip = (props) => {
 
@@ -23,10 +26,15 @@ const SelectionChip = (props) => {
         }
     } 
 
-    console.log(getStyles(type), type)
+    const array = useSelector(sortingSelectors.getArray)
+    const arraySize = useSelector(sortingSelectors.getArraySize)
+    const dispatch = useDispatch()
+    console.log(getStyles(type), type, dispatch)
 
     return (
-        <Pressable style={getStyles(type)} >
+        <Pressable style={getStyles(type)} onPress={() => {
+            quickSort(array, arraySize, dispatch)
+        }} >
             {isSelected ? <Image source={images.tick} style={styles.mark}></Image> : (
                 <View style={styles.unmark}>
                 </View>

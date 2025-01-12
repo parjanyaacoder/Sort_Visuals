@@ -18,10 +18,13 @@ const sortReducer = (state = initialState, action) => {
                 ...state,
                 arraySize: action.payload
             }
-        case sortingActionTypes.SET_SPEED: 
+        case sortingActionTypes.SET_SPEED:
+            const { min_index, array } = action.payload 
             return {
                 ...state,
-                speed: action.payload
+                speed: action.payload,
+                array: [...array],
+                sortedIds: [...state.sortedIds, min_index]
             }
         case sortingActionTypes.GENERATE_ARRAY: 
             return {
