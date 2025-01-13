@@ -5,7 +5,7 @@ import styles from "../styles/chip";
 import images from "../constants/images";
 import { useDispatch, useSelector } from "react-redux";
 import sortingSelectors from "../selectors/sorting";
-import { bubbleSort, selectionSort, quickSort, mergeSort } from "../utils/sorting";
+import { bubbleSort, selectionSort, quickSort, mergeSort, heapSort } from "../utils/sorting";
 
 const SelectionChip = (props) => {
 
@@ -32,7 +32,7 @@ const SelectionChip = (props) => {
 
     return (
         <Pressable style={getStyles(type)} onPress={() => {
-            mergeSort(array, arraySize, dispatch)
+            heapSort(array, arraySize, dispatch)
         }} >
             {isSelected ? <Image source={images.tick} style={styles.mark}></Image> : (
                 <View style={styles.unmark}>

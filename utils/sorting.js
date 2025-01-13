@@ -154,3 +154,43 @@ const sort = async (array, l, r, dispatch) => {
 export const mergeSort = async (array, arraySize, dispatch) => {
     await sort(array, 0, arraySize - 1, dispatch)
 }
+
+const heapify = async (array, arraySize, index, dispatch) => {
+    let largest = index
+    let left = 2 * index + 1;
+    let right = 2 * index + 2;
+
+    if (left < arraySize && array[left] > array[largest])
+    {
+        largest = left;
+    }
+
+    if(right < arraySize && array[right] > array[largest]) {
+        largest = right;
+    }
+
+    if(largest !== index ) {
+        swap(array, index, largest)
+        dispatch(sorting.setSpeed({array, min_index: -1}))
+        await new Promise((resolve) => setTimeout(() => {
+            resolve()}, 1000))
+        await heapify(array, arraySize, largest, dispatch)
+    }
+}
+
+export const heapSort = async (array, arraySize, dispatch) => {
+    for (i = Math.floor(arraySize / 2) -1 ;i>=0 ; i--)
+        await heapify(array, arraySize, i, dispatch)
+
+    for (i = arraySize - 1; i > 0 ; i--) {
+        swap(array, 0 , i);
+        dispatch(sorting.setSpeed({array, min_index: i}))
+        await new Promise((resolve) => setTimeout(() => {
+            resolve()}, 1000))
+        await heapify(array, i, 0, dispatch)
+    }
+    dispatch(sorting.setSpeed({array, min_index: 0}))
+    await new Promise((resolve) => setTimeout(() => {
+        resolve()}, 1000))
+    
+}
