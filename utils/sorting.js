@@ -95,3 +95,62 @@ export const insertionSort = async (array, arraySize, dispatch) => {
             resolve()}, 1000))
     }
 }
+
+const merge = async (array, l, m, r, dispatch) => {
+    n1 = m - l + 1;
+    n2 = r - m;
+    const left = new Array(n1);
+    const right = new Array(n2);
+
+    console.log(l, m , r, n1, n2)
+    for(i = 0; i < n1; i++) {
+        left[i] = array[l+i];
+    } 
+
+    for(i = 0; i < n2; i++) {
+        right[i] = array[m+i+1];
+    } 
+
+    k = l; i = 0; j = 0;
+    while(i < n1 && j<n2) {
+        console.log(left[i], right[j])
+        if(left[i] <= right[j]) {
+            array[k++] = left[i++];
+            dispatch(sorting.setSpeed({array, min_index: r - l + 1 == array.length ? k-1 : -1}))
+            await new Promise((resolve) => setTimeout(() => {
+                resolve()}, 1000))
+        } else {
+            array[k++] =right[j++];
+            dispatch(sorting.setSpeed({array, min_index: r - l + 1 == array.length ? k-1 :-1}))
+            await new Promise((resolve) => setTimeout(() => {
+                resolve()}, 1000))
+        }
+    }
+
+    while(i<n1) {
+        array[k++] = left[i++];
+        dispatch(sorting.setSpeed({array, min_index: r - l + 1 == array.length ? k-1 :-1}))
+        await new Promise((resolve) => setTimeout(() => {
+            resolve()}, 1000))
+    }
+
+    while(j<n2) {
+        array[k++] = right[j++];
+        dispatch(sorting.setSpeed({array, min_index: r - l + 1 == array.length ? k-1 :-1}))
+        await new Promise((resolve) => setTimeout(() => {
+            resolve()}, 1000))
+    }
+}
+
+const sort = async (array, l, r, dispatch) => {
+    if (l < r) {
+        const m = Math.floor(l + (r-l)/2);
+        await sort(array, l, m, dispatch);
+        await sort(array, m+1, r, dispatch);
+        await merge(array, l , m , r, dispatch);
+    }
+}
+
+export const mergeSort = async (array, arraySize, dispatch) => {
+    await sort(array, 0, arraySize - 1, dispatch)
+}

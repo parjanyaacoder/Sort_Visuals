@@ -13,8 +13,6 @@ const Bar = (props) => {
     const barHeight = BarDimensions.getBarHeight(item)
     const barWidth = BarDimensions.getBarWidth(arrayCount)
     const sortedIds = useSelector(sortingSelectors.getSortedIds)
-
-    console.log(sortedIds,'SortedIDs')
     return (
     <View style={styles.bar(barHeight, barWidth, false,  sortedIds.has(index))}>
     </View>
